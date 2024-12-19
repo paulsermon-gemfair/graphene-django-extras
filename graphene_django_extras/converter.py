@@ -335,7 +335,8 @@ def convert_many_rel_to_djangomodel(field, registry=None, input_flag=None, neste
                 )
             else:
                 return DjangoListField(
-                    _type, required=is_required(field) and input_flag == "create"
+                    _type, required=is_required(field) and input_flag == "create",
+                    description=field.help_text or field.verbose_name,
                 )
 
     return Dynamic(dynamic_type)
